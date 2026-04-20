@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist Mantenimiento</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Checklist de Mantenimiento</h1>
+
+<div class="topbar">
+  <button id="btnDia" onclick="setTema('light')">☀️ Día</button>
+  <button id="btnNoche" onclick="setTema('dark')">🌙 Noche</button>
+  <button onclick="pedirReset()">🔄 Reset</button>
+</div>
+
+<div class="sf-bar-wrap">
+  <span class="sf-label">0%</span>
+  <div class="sf-track"><div class="sf-fill" id="barra"></div></div>
+  <span class="sf-pct" id="barraLabel">INICIO</span>
+</div>
+
+<div id="container"></div>
+
+<!-- INPUT GAMING RECORD -->
+<div class="record-overlay" id="recordOverlay">
+  <div class="record-titulo">★ NUEVO RÉCORD ★</div>
+  <div class="record-tiempo" id="recordTiempoDisplay"></div>
+  <div class="record-letras">
+    <input class="letra-box" id="l0" maxlength="1" autocomplete="off" spellcheck="false">
+    <input class="letra-box" id="l1" maxlength="1" autocomplete="off" spellcheck="false">
+    <input class="letra-box" id="l2" maxlength="1" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="record-instruccion">INTRODUCE TUS INICIALES</div>
+  <button class="record-btn" onclick="confirmarRecord()">CONFIRMAR</button>
+</div>
+
+<!-- PANTALLA FINAL -->
+<div class="final" id="final">
+  <h2>🏆 NIVEL COMPLETADO</h2>
+  <div id="finalTime" style="font-size:18px; opacity:0.8; text-align:center;"></div>
+  <div class="final-top3" id="finalTop3"></div>
+  <button onclick="resetChecklist()">🔄 Volver a empezar</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

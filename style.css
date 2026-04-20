@@ -1,0 +1,468 @@
+/* ── ARCADE NEÓN PASTEL (día) ── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap');
+
+:root {
+  --bg1: #fef3ff;
+  --card: #ffffff;
+  --text: #2d0036;
+  --accent: #d946a8;
+  --accent2: #06b6d4;
+  --font-main: 'Nunito', sans-serif;
+  --radius-card: 20px;
+  --shadow-card: 0 4px 0px #d946a855, 0 8px 24px #f0abdc55;
+}
+
+/* ── SYNTHWAVE (noche) ── */
+body.dark {
+  --bg1: #0d0221;
+  --card: #160835;
+  --text: #f0e6ff;
+  --accent: #bf5af2;
+  --accent2: #ff2d78;
+  --font-main: 'Nunito', sans-serif;
+  --radius-card: 16px;
+  --shadow-card: 0 0 16px #bf5af244, 0 0 40px #bf5af211;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg1);
+  margin: 0;
+  padding: 20px;
+  color: var(--text);
+  transition: background 0.4s, color 0.3s;
+}
+
+/* Rejilla synthwave en el fondo */
+body.dark::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45vh;
+  background:
+    linear-gradient(transparent 70%, #0d0221 100%),
+    repeating-linear-gradient(90deg, #bf5af222 0px, #bf5af222 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(0deg, #bf5af222 0px, #bf5af222 1px, transparent 1px, transparent 40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * { position: relative; z-index: 1; }
+
+h1 {
+  text-align: center;
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: clamp(14px, 4vw, 24px);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+body:not(.dark) h1 {
+  -webkit-text-stroke: 1px #d946a8;
+  text-shadow: 0 2px 0 #f0abdc, 0 4px 12px #f0abdc88;
+}
+
+body.dark h1 {
+  color: #ff2d78;
+  text-shadow: 0 0 12px #ff2d78, 0 0 30px #bf5af2aa, 0 0 60px #bf5af255;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+button {
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 900;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 0 #9d1580, 0 6px 16px #d946a855;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #9d1580;
+}
+
+body.dark button {
+  box-shadow: 0 4px 0 #7a1fa0, 0 0 20px #bf5af266;
+}
+
+body.dark button:hover {
+  box-shadow: 0 4px 0 #7a1fa0, 0 0 30px #bf5af299;
+}
+
+/* Botón activo de tema */
+button.tema-activo {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* GRUPOS */
+.grupo {
+  background: var(--card);
+  border-radius: var(--radius-card);
+  border: 2px solid #f0abdc44;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+body.dark .grupo {
+  border: 1px solid #bf5af233;
+  box-shadow: 0 0 20px #bf5af222, inset 0 0 30px #0d022188;
+}
+
+.grupo.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.grupo h2 {
+  margin-top: 0;
+  font-size: 13px;
+  font-family: var(--font-main);
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+body.dark .grupo h2 {
+  text-shadow: 0 0 10px #bf5af2aa;
+}
+
+.tarea {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 13px;
+  font-family: var(--font-main);
+  font-weight: 700;
+}
+
+.tarea input[type="checkbox"] {
+  margin-right: 12px;
+  transform: scale(1.3);
+  accent-color: var(--accent);
+}
+
+/* BARRA SF */
+.sf-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  background: rgba(217,70,168,0.08);
+  border-radius: 50px;
+  border: 2px solid #f0abdc66;
+}
+
+body.dark .sf-bar-wrap {
+  background: rgba(191,90,242,0.08);
+  border-color: #bf5af244;
+}
+
+.sf-label {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--accent);
+  white-space: nowrap;
+  min-width: 28px;
+}
+
+body.dark .sf-label { color: #bf5af2; text-shadow: 0 0 8px #bf5af2; }
+
+.sf-track {
+  flex: 1;
+  height: 18px;
+  background: rgba(0,0,0,0.1);
+  border: 2px solid #f0abdc88;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+body.dark .sf-track {
+  border-color: #bf5af244;
+  background: rgba(0,0,0,0.4);
+}
+
+.sf-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 50px;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1), background-color 0.6s ease;
+  background-color: #dc2626;
+  position: relative;
+}
+
+.sf-fill::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50px;
+}
+
+.sf-track::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 9px,
+    rgba(0,0,0,0.12) 9px,
+    rgba(0,0,0,0.12) 10px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sf-pct {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--accent);
+  min-width: 36px;
+  text-align: right;
+}
+
+body.dark .sf-pct { color: #bf5af2; text-shadow: 0 0 8px #bf5af2; }
+
+/* PANTALLA FINAL */
+.final {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #000000dd, #000000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.final.show { opacity: 1; pointer-events: all; }
+
+.final h2 { animation: pop 0.6s ease; margin: 0; text-align: center; }
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.final button {
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 12px;
+}
+
+/* TOP 3 */
+.final-top3 {
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  font-weight: normal;
+  color: #ffd700;
+  text-align: center;
+  line-height: 1.8;
+  border: 1px solid #ffd70055;
+  padding: 10px 24px;
+  border-radius: 10px;
+  background: rgba(255,215,0,0.07);
+  min-width: 220px;
+}
+
+.final-top3 .top3-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.final-top3 .top3-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.final-top3 .top3-row.nuevo {
+  color: #fff;
+  text-shadow: 0 0 8px #ffd700;
+}
+
+/* INPUT GAMING RECORD */
+.record-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 12vh;
+  gap: 22px;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.record-overlay.show { opacity: 1; pointer-events: all; }
+
+.record-titulo {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: #ffd700;
+  text-align: center;
+  animation: blink-text 1s step-end infinite;
+}
+
+@keyframes blink-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.record-tiempo {
+  font-family: "Courier New", monospace;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.record-letras {
+  display: flex;
+  gap: 12px;
+}
+
+.letra-box {
+  width: 52px;
+  height: 64px;
+  background: #000;
+  border: 3px solid #ffd700;
+  color: #ffd700;
+  font-family: "Courier New", monospace;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  caret-color: transparent;
+  outline: none;
+  box-shadow: 0 0 12px #ffd70066, inset 0 0 8px #ffd70022;
+  transition: box-shadow 0.2s;
+}
+
+.letra-box:focus {
+  box-shadow: 0 0 20px #ffd700aa, inset 0 0 12px #ffd70044;
+}
+
+.record-btn {
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  letter-spacing: 3px;
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 12px 32px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 16px #ffd70088;
+  transition: box-shadow 0.2s;
+}
+
+.record-btn:hover { box-shadow: 0 0 28px #ffd700cc; }
+
+.record-instruccion {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #888;
+}
+
+/* PARTÍCULAS */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 2s linear forwards;
+}
+
+@keyframes float {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-300px) scale(0.5); opacity: 0; }
+}
+
+/* HOF (pantalla final) */
+.hof {
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 0;
+  border: 1px solid #ffd70055;
+  background: rgba(255,215,0,0.07);
+  min-width: 220px;
+}
+
+.hof h2 {
+  margin-top: 0;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #aaa;
+  font-family: "Courier New", monospace;
+  font-weight: normal;
+}
+
+.hof-entry {
+  font-size: 14px;
+  font-family: "Courier New", monospace;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.15);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ffd700;
+}
+
+.hof-entry:last-child { border-bottom: none; }
+
+.hof-initials {
+  font-weight: bold;
+  color: #ffd700;
+  min-width: 36px;
+}
