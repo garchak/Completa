@@ -394,3 +394,25 @@ const temaGuardado = localStorage.getItem("tema") || "light";
 aplicarTema(temaGuardado);
 getHof();
 render();
+
+/* ── EMAIL ── */
+
+function abrirEmail() {
+  document.getElementById("emailContrato").value = "";
+  document.getElementById("emailMensaje").value = "";
+  document.getElementById("emailOverlay").classList.add("show");
+  setTimeout(() => document.getElementById("emailContrato").focus(), 100);
+}
+
+function cerrarEmail() {
+  document.getElementById("emailOverlay").classList.remove("show");
+}
+
+function enviarEmail() {
+  const contrato = document.getElementById("emailContrato").value.trim();
+  const mensaje = document.getElementById("emailMensaje").value.trim();
+  if (!mensaje) return;
+  const asunto = contrato ? `Contrato ${contrato}` : "Notificación mantenimiento";
+  window.location.href = `mailto:garchaktali@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+  cerrarEmail();
+}
