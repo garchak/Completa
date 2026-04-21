@@ -15,6 +15,7 @@
   <button id="btnDia" onclick="setTema('light')">☀️ Día</button>
   <button id="btnNoche" onclick="setTema('dark')">🌙 Noche</button>
   <button onclick="pedirReset()">🔄 Reset</button>
+  <button onclick="abrirEmail()">✉️</button>
 </div>
 
 <div class="sf-bar-wrap">
@@ -24,6 +25,19 @@
 </div>
 
 <div id="container"></div>
+
+<!-- MODAL EMAIL -->
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-modal">
+    <h3>✉️ Enviar notificación</h3>
+    <textarea id="emailMensaje" placeholder="Escribe tu mensaje..." rows="5"></textarea>
+    <div class="email-btns">
+      <button onclick="cerrarEmail()">Cancelar</button>
+      <button id="btnEnviar" onclick="enviarEmail()">Enviar</button>
+    </div>
+    <div id="emailStatus"></div>
+  </div>
+</div>
 
 <!-- INPUT GAMING RECORD -->
 <div class="record-overlay" id="recordOverlay">
