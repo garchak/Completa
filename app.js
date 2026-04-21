@@ -413,6 +413,10 @@ function enviarEmail() {
   const mensaje = document.getElementById("emailMensaje").value.trim();
   if (!mensaje) return;
   const asunto = contrato ? `Contrato ${contrato}` : "Notificación mantenimiento";
-  window.location.href = `mailto:garchaktali@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+  const a = document.createElement("a");
+  a.href = `mailto:garchaktali@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
   cerrarEmail();
 }
